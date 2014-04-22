@@ -1,6 +1,8 @@
 # I love popcorn!
 
-I love popcorn! is a client for yts.re. I do not condone any illeagal activities, such as downloading movies, that may be illegal in your country. Use at your own responsibility.
+I love popcorn! is a client for yts.re. I do not condone any activities, such as downloading movies, that may be illegal in your country. Use at your own responsibility.
+
+![Screenshot](screenshot.png "Screenshot, beautiful is it not?")
 
 ## Requirements
 
