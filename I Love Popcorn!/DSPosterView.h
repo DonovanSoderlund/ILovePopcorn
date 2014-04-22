@@ -1,0 +1,58 @@
+//
+// DSPosterView.h
+//
+// Copyright (c) 2014 Donovan Söderlund ( http://donovan.se )
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+
+#import <Cocoa/Cocoa.h>
+#import "YIFYMovie.h"
+#import "DSPopoverViewController.h"
+
+@protocol DSPosterViewDelegate;
+
+@interface DSPosterView : NSImageView
+
+@property (strong) NSPopover *popover;
+@property BOOL popoverIsShowing;
+@property (strong) NSImage *normalImage;
+@property (strong) NSImage *tintedImage;
+@property (strong) NSProgressIndicator *progressIndicator;
+@property (strong) YIFYMovie *movie;
+
+@property (weak) id<DSPosterViewDelegate> delegate;
+
+- (void)setPosterUrlString:(NSString*)urlString;
+- (void)tintImage;
+- (void)untintImage;
+- (id)copyWithZone:(NSZone *)zone;
+
+@end
+
+@protocol DSPosterViewDelegate <NSObject>
+
+@optional
+
+- (void)posterViewDidFinishLoadingPoster:(DSPosterView*)posterView;
+- (void)mouseEnteredPoster:(DSPosterView*)posterView;
+- (void)mouseExitedPoster:(DSPosterView*)posterView;
+- (void)mouseDownOnPoster:(DSPosterView*)posterView;
+
+@end
+
